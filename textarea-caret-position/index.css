@@ -1,12 +1,22 @@
 input[type="text"], textarea {
-    font: inherit;
-    font-family: 'Times New Roman';  /* a proportional font makes it more difficult to calculate the position */
-    font-size: 14px;
-    line-height: 16px;
-    padding: 24px 32px 16px 8px;    /* different paddings so position computations don't accidentally return a "correct" result */
-    text-transform: uppercase;      /* this drastically changes character width on proportional fonts */
-    text-indent: 20px;
-    border: 16px lightblue dotted;  /* needs to be accounted for when returning the final position */
-    border-right-width: 24px;       /* discourage naive border arithmetic */
-    background: lightyellow;
+    padding: 10px 10px 0 10px;
+    margin-bottom: 0;
+    font-family: monospace;
+    font-size: 13px;
+    -webkit-overflow-scrolling: touch;
+    resize: none;
+    outline: none;
+    border: none !important;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    box-sizing: border-box;
+    transition: border linear .2s, box-shadow linear .2s;
+    line-height: 20px;
+    color: #555;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    vertical-align: middle;
+    font-weight: normal;
 }
