@@ -71,6 +71,41 @@
 </p>
 
 <script>
+    function toggleMirrorDivDisplay(checkbox) {
+        showMirrorDiv = checkbox.checked;
+    }
+    ['input[type="text"]', 'textarea'].forEach(function (selector) {
+
+        var element = document.querySelector(selector);
+        var fontSize = getComputedStyle(element).getPropertyValue('font-size');
+
+        var rect = document.createElement('div');
+        document.body.appendChild(rect);
+        rect.style.position = 'absolute';
+        rect.style.backgroundColor = 'red';
+        rect.style.height = fontSize;
+        rect.style.width = '1px';
+
+        ['keyup', 'click', 'scroll'].forEach(function (event) {
+            element.addEventListener(event, update);
+        });
+
+        function update() {
+            var coordinates = getCaretCoordinates(element, element.selectionEnd);
+            console.log('(top, left) = (%s, %s)', coordinates.top, coordinates.left);
+            rect.style.top = element.offsetTop
+                    - element.scrollTop
+                    + coordinates.top
+                    + 'px';
+            rect.style.left = element.offsetLeft
+                    - element.scrollLeft
+                    + coordinates.left
+                    + 'px';
+        }
+    });
+</script>
+
+<script>
     // The properties that we copy into a mirrored div.
     // Note that some browsers, such as Firefox,
     // do not concatenate properties, i.e. padding-top, bottom etc. -> padding,
