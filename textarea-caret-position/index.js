@@ -77,7 +77,7 @@ getCaretCoordinates = function (element, position) {
   } else {
     style.overflow = 'hidden';  // for Chrome to not render a scrollbar; IE keeps overflowY = 'scroll'
   }
-  mirrorDiv.font = "inherit";
+  mirrorDiv.style.font = "inherit";
 
   mirrorDiv.textContent = element.value.substring(0, position);
   // the second special handling for input type="text" vs textarea: spaces need to be replaced with non-breaking spaces - http://stackoverflow.com/a/13402035/1269037
