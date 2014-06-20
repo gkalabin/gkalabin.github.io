@@ -138,7 +138,7 @@
         // position off-screen
         style.position = 'absolute';  // required to return coordinates properly
         style.top = element.offsetTop + parseInt(computed.borderTopWidth) + 'px';
-        style.left = "400px";
+//        style.left = "400px";
         style.visibility = mirrorDivDisplayCheckbox.checked ? 'visible' : 'hidden';  // not 'display: none' because we want rendering
 
         // transfer the element's properties to the div
@@ -159,6 +159,9 @@
         
         
 //        mirrorDiv.style.font = "inherit";
+        style.left = "26px";
+        style.opacity = "0.5";
+        style.color = "red";
         
         
         
