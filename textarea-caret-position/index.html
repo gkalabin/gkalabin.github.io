@@ -36,13 +36,10 @@
 <br/>
 
 <label>
-    <input type="checkbox" id="mirrorDivDisplay" onchange="toggleMirrorDivDisplay(this)">Show mirror div
+    <input type="checkbox" id="mirrorDivDisplay" checked>Show mirror div
 </label>
 
 <script>
-    function toggleMirrorDivDisplay(checkbox) {
-        showMirrorDiv = checkbox.checked;
-    }
     ['textarea'].forEach(function (selector) {
 
         var element = document.querySelector(selector);
@@ -97,11 +94,14 @@
         'paddingLeft',
 
         // https://developer.mozilla.org/en-US/docs/Web/CSS/font
+        'font',
         'fontStyle',
         'fontVariant',
         'fontWeight',
         'fontStretch',
         'fontSize',
+        'fontSizeAdjust',
+        'fontKerning',
         'lineHeight',
         'fontFamily',
 
