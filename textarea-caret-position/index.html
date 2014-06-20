@@ -43,7 +43,7 @@
     function toggleMirrorDivDisplay(checkbox) {
         showMirrorDiv = checkbox.checked;
     }
-    ['input[type="text"]', 'textarea'].forEach(function (selector) {
+    ['textarea'].forEach(function (selector) {
 
         var element = document.querySelector(selector);
         var fontSize = getComputedStyle(element).getPropertyValue('font-size');
