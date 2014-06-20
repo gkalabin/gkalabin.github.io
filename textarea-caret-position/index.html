@@ -8,16 +8,6 @@
     <!-- this will trigger an `Uncaught ReferenceError: module is not defined`, which can be safely ignored -->
 </head>
 <body>
-<p>This is a demo of <a href="https://github.com/component/textarea-caret-position">textarea-caret-position</a>, a <em>component</em>
-    to determine the pixel coordinates of the cursor in a <code>textarea</code> or <code>input type="text"</code>.
-
-<p>Click anywhere in the text to see a red vertical line &ndash; a 1-pixel div that should be positioned exactly at the
-    location of the caret.</p>
-
-<input type="text" size="15" maxlength="240" placeholder="Enter text here">
-
-<hr/>
-
 <textarea rows="25" cols="40">
     I threw a wish in the well,
     Don't ask me, I'll never tell
@@ -48,27 +38,6 @@
 <label>
     <input type="checkbox" id="mirrorDivDisplay" onchange="toggleMirrorDivDisplay(this)">Show mirror div
 </label>
-
-<h3><a href="https://github.com/component/textarea-caret-position">textarea-caret-position</a> Features</h3>
-<ul>
-    <li>pixel precision
-    <li>no dependencies whatsoever
-    <li>browser compatibility: Chrome, Safari, Firefox (despite <a
-            href="https://bugzilla.mozilla.org/show_bug.cgi?id=753662">two</a> <a
-            href="https://bugzilla.mozilla.org/show_bug.cgi?id=984275">bugs</a> it has), Opera, IE9+
-    <li>supports any font family and size, as well as text-transforms
-    <li>the text area can have arbitrary padding or borders
-    <li>not confused by horizontal or vertical scrollbars in the textarea
-    <li>supports hard returns, tabs (except in IE) and consecutive spaces in the text
-    <li>correct position on lines longer than the columns in the text area
-    <li>no <a
-            href="https://github.com/component/textarea-caret-position/blob/06d2197f85f96405b43724e56dc56f220c0092a5/test/position_off_after_wrapping_with_whitespace_before_EOL.gif">"ghost"
-        position in the empty space</a> at the end of a line when wrapping long words
-</ul>
-
-<p>PS: The cursor appearing within the top border if you scroll down then move the cursor up is a <a
-        href="https://code.google.com/p/chromium/issues/detail?id=353036">Chrome bug</a>.
-</p>
 
 <script>
     function toggleMirrorDivDisplay(checkbox) {
