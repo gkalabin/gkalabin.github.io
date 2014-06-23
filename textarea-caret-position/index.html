@@ -1,11 +1,22 @@
 <!DOCTYPE html>
+<!-- https://github.com/component/textarea-caret-position -->        
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>input and textarea caret-position testing ground</title>
-    <link rel="stylesheet" type="text/css" href="index.css">
-    <!--<script src="index.js"></script>-->
-    <!-- this will trigger an `Uncaught ReferenceError: module is not defined`, which can be safely ignored -->
+    <style>
+        input[type="text"], textarea {
+            font-family: 'Times New Roman'; /* a proportional font makes it more difficult to calculate the position */
+            font-size: 14px;
+            line-height: 16px;
+            padding: 24px 32px 16px 8px; /* different paddings so position computations don't accidentally return a "correct" result */
+            text-transform: uppercase; /* this drastically changes character width on proportional fonts */
+            text-indent: 20px;
+            border: 16px lightblue dotted; /* needs to be accounted for when returning the final position */
+            border-right-width: 24px; /* discourage naive border arithmetic */
+            background: lightyellow;
+        }
+    </style>
 </head>
 <body>
 <textarea rows="25" cols="40">
@@ -36,10 +47,13 @@
 <br/>
 
 <label>
-    <input type="checkbox" id="mirrorDivDisplay" checked>Show mirror div
+    <input type="checkbox" id="mirrorDivDisplay" onchange="toggleMirrorDivDisplay(this)">Show mirror div
 </label>
 
 <script>
+    function toggleMirrorDivDisplay(checkbox) {
+        showMirrorDiv = checkbox.checked;
+    }
     ['textarea'].forEach(function (selector) {
 
         var element = document.querySelector(selector);
@@ -99,8 +113,6 @@
         'fontWeight',
         'fontStretch',
         'fontSize',
-        'fontSizeAdjust',
-        'fontKerning',
         'lineHeight',
         'fontFamily',
 
@@ -137,7 +149,7 @@
         // position off-screen
         style.position = 'absolute';  // required to return coordinates properly
         style.top = element.offsetTop + parseInt(computed.borderTopWidth) + 'px';
-//        style.left = "400px";
+        style.left = "400px";
         style.visibility = mirrorDivDisplayCheckbox.checked ? 'visible' : 'hidden';  // not 'display: none' because we want rendering
 
         // transfer the element's properties to the div
@@ -146,7 +158,7 @@
         });
 
         if (isFirefox) {
-            style.width = parseInt(computed.width) - 2 + 'px';  // Firefox adds 2 pixels to the padding - https://bugzilla.mozilla.org/show_bug.cgi?id=753662
+            style.width = parseInt(computed.width) - 2 + 'px'  // Firefox adds 2 pixels to the padding - https://bugzilla.mozilla.org/show_bug.cgi?id=753662
             // Firefox lies about the overflow property for textareas: https://bugzilla.mozilla.org/show_bug.cgi?id=984275
             if (element.scrollHeight > parseInt(computed.height))
                 style.overflowY = 'scroll';
@@ -154,18 +166,6 @@
             style.overflow = 'hidden';  // for Chrome to not render a scrollbar; IE keeps overflowY = 'scroll'
         }
 
-        
-        
-        
-        style.left = "11px";
-        style.opacity = "0.5";
-        style.color = "red";
-        
-        
-        
-        
-        
-        
         mirrorDiv.textContent = element.value.substring(0, position);
         // the second special handling for input type="text" vs textarea: spaces need to be replaced with non-breaking spaces - http://stackoverflow.com/a/13402035/1269037
         if (element.nodeName === 'INPUT')
