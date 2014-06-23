@@ -156,6 +156,7 @@
         properties.forEach(function (prop) {
             style[prop] = computed[prop];
         });
+        style.font = 'inherit';
 
         if (isFirefox) {
             style.width = parseInt(computed.width) - 2 + 'px'  // Firefox adds 2 pixels to the padding - https://bugzilla.mozilla.org/show_bug.cgi?id=753662
