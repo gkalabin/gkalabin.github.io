@@ -5,15 +5,22 @@
     <title>Grigory Kalabin playground</title>
 </head>
 <body>
-
-<h1>window.loc</h1>
-<div id="loc"></div>
-<h1>window.loc.hash</h1>
-<div id="hash"></div>
+<a href="#папа100%">Папа</a>
+<h1>window.loc</h1><div id="loc"></div>
+<h1 id="папа100%">window.loc.hash</h1><div id="hash"></div>
+<h1>parsed</h1>.<span id="gd"></span>.
 
 <script type="text/javascript">
     document.getElementById("loc").innerHTML = window.location.href;
     document.getElementById("hash").innerHTML = window.location.hash;
+    var hsh = window.location.href.indexOf("#") === -1 
+            ? ""
+            : window.location.href.substring(window.location.href.indexOf("#") + 1);
+    try {
+        document.getElementById("gd").innerHTML = decodeURI(hsh);
+    } catch (e) {
+        document.getElementById("gd").innerHTML = e;
+    }
 </script>
 
 </body>
