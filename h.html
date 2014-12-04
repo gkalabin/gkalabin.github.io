@@ -16,8 +16,7 @@
     document.getElementById("loc").innerHTML = window.location.href;
     document.getElementById("hash").innerHTML = window.location.hash;
     var u = new URI();
-    var f = u.fragment(true);
-    document.getElementById("gd").innerHTML = f.pathname();
+    document.getElementById("gd").innerHTML = u.fragment();
 </script>
 
 </body>
