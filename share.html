@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Grigory Kalabin playground</title>
+</head>
+<body>
+
+Ваш результат:
+<pre id="testing-result"> 
+    Графическое восприятие - 20%
+    Импульсивность - 40%
+    Аналитичность - 30%
+</pre>
+
+<script type="text/javascript" src="//yastatic.net/share/share.js" charset="utf-8"></script>
+<span id="ya_share1"></span>
+
+<script type="text/javascript">
+    new Ya.share({
+        element: 'ya_share1',
+        elementStyle: {
+            'type': 'button',
+            'border': true,
+            'quickServices': ['facebook', 'odnoklassniki', 'twitter', 'vkontakte']
+        },
+        link: 'http://adriver.ru/test-yo-self',
+        title: 'Тест на определение стиля личности',
+        description: document.getElementById("testing-result").innerText
+//        popupStyle: {
+//            blocks: {
+//                'Поделись-ка!': ['lj', 'twitter', '', 'vkontakte'],
+//                'Поделись-ка по-другому!': ['lj', 'twitter', 'vkontakte']
+//            },
+//            copyPasteField: true
+//        },
+//        serviceSpecific: {
+//            twitter: {
+//                title: '#Yandex — the best search engine in the universe!'
+//            }
+//        }
+    });
+</script>
+
+
+</body>
+</html>
